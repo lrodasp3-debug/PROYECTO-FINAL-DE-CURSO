@@ -3,17 +3,28 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Calculadora de Cálculo II", page_icon="📈", layout="centered")
+st.set_page_config(page_title="CALCULADORA CÁLCULO II, page_icon="📈", layout="centered")
 
-st.title("📘 Calculadora Gráfica de Cálculo II")
+st.title("📘 CALCULADORA DE CALCULO II")
 st.markdown("""
-Esta aplicación permite:
+Esta Calculador permite:
 - Calcular **derivadas** e **integrales**
 - Obtener **áreas bajo la curva**
 - Calcular **volúmenes de revolución**
 - Visualizar los resultados de forma gráfica
 """)
 
+with st.expander("❓ Cómo usar"):
+    st.markdown(
+        """
+        1. Escribe la función en términos de `x`.
+           - Potencias: `x**2`  (no usar ^)
+           - Funciones: `sin(x)`, `cos(x)`, `Tagente(x)`, `log(x)`, `Contagete(x)`
+        2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
+        3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
+        4. Presiona la opción y la app mostrará el resultado y la gráfica.
+        """
+    )
 # --- Entrada de función ---
 x = sp.Symbol('x')
 funcion_str = st.text_input("✏️ Ingresa la función en términos de x:", "x**2 + 3*x - 2")
