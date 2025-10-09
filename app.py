@@ -130,5 +130,3 @@ if funcion_str:
                 else:
                     st.info("No se pudo graficar la función numéricamente.")
 
-    except Exception as e:
-        st.error(f"⚠️ Error al procesar la función: {e}"
