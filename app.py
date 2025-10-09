@@ -46,11 +46,11 @@ if funcion_str:
             plt.grid(True)
             st.pyplot(plt)
 
-        elif opcion == "Integrar (indefinida)":
+        elif opcion == "Integrar":
             integral = sp.integrate(f, x)
             st.latex(f"∫ f(x) dx = {sp.latex(integral + sp.Symbol('C'))}")
 
-        elif opcion == "Área bajo la curva (integral definida)":
+        elif opcion == "Área bajo la curva":
             a = st.number_input("Límite inferior (a):", value=0.0)
             b = st.number_input("Límite superior (b):", value=2.0)
             area = sp.integrate(f, (x, a, b))
