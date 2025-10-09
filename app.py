@@ -3,9 +3,9 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Calculadora Gráfica de Cálculo II", page_icon="📈", layout="centered")
+st.set_page_config(page_title="CALCULADORA DE DERIVADAS Y INTEGRALES", page_icon="📈", layout="centered")
 
-st.title("📘 Calculadora Gráfica de Cálculo II")
+st.title("📘 CALCULADORA DE DERIVADAS Y INTEGRALES")
 st.markdown(
     """
     Esta aplicación permite:
@@ -14,14 +14,14 @@ st.markdown(
     - Calcular **volúmenes de revolución**
     - Visualizar los resultados de forma gráfica
 
-    Ejemplos de funciones válidas: `x**2`, `x**3 - 2*x + 1`, `sin(x)`, `exp(x)`, `1/(x+1)`
+    Ejemplos de funciones válidas: `x^2`, `x^3 - 2*x + 1`, `sin(x)`, `1/(x+1)`
     """
 )
 
-with st.expander("❓ Cómo usar (ejemplos rápidos)"):
+with st.expander("❓ Cómo usar"):
     st.markdown(
         """
-        1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
+        1. Escribe la función en términos de `x`.
            - Potencias: `x**2`  (no usar ^)
            - Funciones: `sin(x)`, `cos(x)`, `exp(x)`, `log(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
