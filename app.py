@@ -29,9 +29,9 @@ with st.expander("❓ Cómo usar"):
         4. Presiona la opción y la app mostrará el resultado y la gráfica.
         """
     )
-# --- Entrada de función ---
+
 x = sp.Symbol('x')
-funcion_str = st.text_input("✏️ Ingresa la función en términos de x:", "x**2 + 3*x - 2")
+funcion_str = st.text_input(" Ingresa la función en términos de")
 
 if funcion_str:
     try:
