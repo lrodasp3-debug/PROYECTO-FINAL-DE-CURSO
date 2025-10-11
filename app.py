@@ -3,9 +3,9 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Calculadora Gráfica ", page_icon="📈", layout="centered")
+st.set_page_config(page_title="Calculadora Gráfica", page_icon="📈", layout="centered")
 
-st.title("📘Calculadora Gráfica📘")
+st.title("📘 Calculadora Gráfica 📘")
 st.markdown(
     """
     Esta aplicación permite:
@@ -18,19 +18,19 @@ st.markdown(
     """
 )
 
-with st.expander("Cómo usar"):
+with st.expander("ℹ️ Cómo usar"):
     st.markdown(
         """
         1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
            - Potencias: `x**2`  (no usar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `tan(x)`, `sec(x)`, `cot(x)`
+           - Funciones: `sin(x)`, `cos(x)`, `tan(x)`, `exp(x)`, `log(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
     )
 
 x = sp.Symbol('x')
-funcion_str = st.text_input("Ingresa la función en términos de x:", "x**2 + 3*x - 2")
+funcion_str = st.text_input("✏️ Ingresa la función en términos de x:", "x**2 + 3*x - 2")
 
 if funcion_str:
     try:
@@ -45,22 +45,22 @@ if funcion_str:
             "Volumen de revolución (alrededor del eje X)"
         ])
 
-        # 🎨 Fondo dinámico con transición suave
-        background_colors = {
-            "Derivar": "#e0f7fa",  # azul claro
-            "Integrar (indefinida)": "#fff3e0",  # naranja suave
-            "Área bajo la curva (integral definida)": "#e8f5e9",  # verde claro
-            "Volumen de revolución (alrededor del eje X)": "#f3e5f5"  # violeta suave
+        # 🎨 Fondos dinámicos con degradados
+        background_gradients = {
+            "Derivar": "linear-gradient(135deg, #e0f7fa, #80deea)",      # azul degradado
+            "Integrar (indefinida)": "linear-gradient(135deg, #fff3e0, #ffcc80)", # naranja degradado
+            "Área bajo la curva (integral definida)": "linear-gradient(135deg, #e8f5e9, #a5d6a7)", # verde degradado
+            "Volumen de revolución (alrededor del eje X)": "linear-gradient(135deg, #f3e5f5, #ce93d8)" # violeta degradado
         }
 
-        color = background_colors.get(opcion, "#ffffff")
+        gradient = background_gradients.get(opcion, "linear-gradient(135deg, #ffffff, #f0f0f0)")
 
         st.markdown(
             f"""
             <style>
-            body {{
-                background-color: {color};
-                transition: background-color 1s ease;
+            .stApp {{
+                background: {gradient};
+                transition: background 1s ease;
             }}
             </style>
             """,
@@ -102,7 +102,7 @@ if funcion_str:
             a = st.number_input("Límite inferior (a):", value=0.0, format="%.6f")
             b = st.number_input("Límite superior (b):", value=2.0, format="%.6f")
             if b <= a:
-                st.warning("El límite superior b debe ser mayor que a.")
+                st.warning("⚠️ El límite superior b debe ser mayor que a.")
             else:
                 area = sp.integrate(f, (x, a, b))
                 st.markdown("**Área definida:**")
@@ -113,8 +113,8 @@ if funcion_str:
                     xx = np.linspace(a, b, 300)
                     yy = f_num(xx)
                     plt.figure(figsize=(6, 3.5))
-                    plt.fill_between(xx, yy, where=~np.isnan(yy), alpha=0.5)
-                    plt.plot(xx, yy)
+                    plt.fill_between(xx, yy, where=~np.isnan(yy), alpha=0.5, color="orange")
+                    plt.plot(xx, yy, color="black")
                     plt.title(f"Área bajo f(x) de {a} a {b}")
                     plt.grid(True)
                     st.pyplot(plt)
@@ -126,7 +126,7 @@ if funcion_str:
             a = st.number_input("Límite inferior (a):", value=0.0, format="%.6f", key="vol_a")
             b = st.number_input("Límite superior (b):", value=2.0, format="%.6f", key="vol_b")
             if b <= a:
-                st.warning("El límite superior b debe ser mayor que a.")
+                st.warning("⚠️ El límite superior b debe ser mayor que a.")
             else:
                 volumen = sp.integrate(sp.pi * f**2, (x, a, b))
                 st.markdown("**Volumen de revolución (eje X):**")
@@ -137,8 +137,8 @@ if funcion_str:
                     xx = np.linspace(a, b, 300)
                     yy = f_num(xx)
                     plt.figure(figsize=(6, 3.5))
-                    plt.plot(xx, yy)
-                    plt.fill_between(xx, yy, alpha=0.3)
+                    plt.plot(xx, yy, color="purple")
+                    plt.fill_between(xx, yy, alpha=0.3, color="violet")
                     plt.title("Visualización 2D del perfil (revolución alrededor del eje X)")
                     plt.grid(True)
                     st.pyplot(plt)
