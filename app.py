@@ -18,12 +18,12 @@ st.markdown(
     """
 )
 
-with st.expander("ℹ️ Cómo usar"):
+with st.expander("Cómo usar"):
     st.markdown(
         """
-        1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
-           - Potencias: `x**2`  (no usar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `tan(x)`, `exp(x)`, `log(x)`
+        1. Escribe la función en términos de `x`.
+           - Potencias: `x**2`  (no Utiñlizar ^)
+           - Funciones: `sin(x)`, `cos(x)`, `tan(x)`, `sec(x)`, `log(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
@@ -42,15 +42,15 @@ if funcion_str:
             "Derivar",
             "Integrar (indefinida)",
             "Área bajo la curva (integral definida)",
-            "Volumen de revolución (alrededor del eje X)"
+            
         ])
 
-        # 🎨 Fondos dinámicos con degradados
+        # FONDOS DINAMICOS
         background_gradients = {
-              "Derivar": "#731603",  # 
+    "Derivar": "#731603",  # 
     "Integrar (indefinida)": "#3B1618",  # verde
     "Área bajo la curva (integral definida)": "#271845",  # verde lima
-    "Volumen de revolución (alrededor del eje X)": "#182D45"  # naranja quemado
+
         }
 
         gradient = background_gradients.get(opcion, "linear-gradient(135deg, #ffffff, #f0f0f0)")
@@ -77,13 +77,13 @@ if funcion_str:
                 return sp.lambdify(x, func, "numpy")
             except Exception:
                 return None
-
+# PRIMERA ECUACION
         if opcion == "Derivar":
             derivada = sp.diff(f, x)
             derivada_s = sp.simplify(derivada)
             st.markdown("**Derivada simbólica:**")
             st.latex(f"f'(x) = {sp.latex(derivada_s)}")
-
+# GRAFICA
             f_num = to_numeric(f)
             d_num = to_numeric(derivada_s)
             if f_num and d_num:
@@ -95,9 +95,11 @@ if funcion_str:
                 plt.grid(True)
                 st.pyplot(plt)
                 plt.close()
+            # MENSAJE DE ERROR
             else:
                 st.info("No se pudo generar la gráfica numérica (función no numérica en algunos puntos).")
 
+        # SEGUNDA ECUACION 
         elif opcion == "Integrar (indefinida)":
             integral = sp.integrate(f, x)
             st.markdown("**Integral indefinida:**")
@@ -107,8 +109,10 @@ if funcion_str:
             a = st.number_input("Límite inferior (a):", value=0.0, format="%.6f")
             b = st.number_input("Límite superior (b):", value=2.0, format="%.6f")
             if b <= a:
+            # MENSAJE DE ERROR
                 st.warning("⚠️ El límite superior b debe ser mayor que a.")
             else:
+                
                 area = sp.integrate(f, (x, a, b))
                 st.markdown("**Área definida:**")
                 st.latex(f"\\mathrm{{Área}} = \\int_{{{a}}}^{{{b}}} f(x)\\,dx = {sp.N(area)}")
@@ -127,29 +131,6 @@ if funcion_str:
                 else:
                     st.info("No se pudo graficar la función numéricamente.")
 
-        elif opcion == "Volumen de revolución (alrededor del eje X)":
-            a = st.number_input("Límite inferior (a):", value=0.0, format="%.6f", key="vol_a")
-            b = st.number_input("Límite superior (b):", value=2.0, format="%.6f", key="vol_b")
-            if b <= a:
-                st.warning("⚠️ El límite superior b debe ser mayor que a.")
-            else:
-                volumen = sp.integrate(sp.pi * f**2, (x, a, b))
-                st.markdown("**Volumen de revolución (eje X):**")
-                st.latex(f"V = \\pi \\int_{{{a}}}^{{{b}}} [f(x)]^2 dx = {sp.N(volumen)}")
-
-                f_num = to_numeric(f)
-                if f_num:
-                    xx = np.linspace(a, b, 300)
-                    yy = f_num(xx)
-                    plt.figure(figsize=(6, 3.5))
-                    plt.plot(xx, yy, color="purple")
-                    plt.fill_between(xx, yy, alpha=0.3, color="violet")
-                    plt.title("Visualización 2D del perfil (revolución alrededor del eje X)")
-                    plt.grid(True)
-                    st.pyplot(plt)
-                    plt.close()
-                else:
-                    st.info("No se pudo graficar la función numéricamente.")
 
     except Exception as e:
         st.error(f"⚠️ Error al procesar la función: {e}")
