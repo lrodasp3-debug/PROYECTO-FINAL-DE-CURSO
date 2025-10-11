@@ -21,11 +21,13 @@ st.markdown(
 with st.expander("Cómo usar"):
     st.markdown(
         """
-        1. Escribe la función en términos de `x`. 
-           - Potencias: `x**2`  (no utilizar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `exp(x)`, `e^(x)`
+        1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
+           - Potencias: `x**2`  (no usar ^)
+           - Funciones: `sin(x)`, `cos(x)`, `exp(x)`, `log(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
+        4. Presiona la opción y la app mostrará el resultado y la gráfica.
+        """
     )
 
 x = sp.Symbol('x')
