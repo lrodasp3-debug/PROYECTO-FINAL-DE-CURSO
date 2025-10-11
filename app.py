@@ -1,11 +1,10 @@
-import streamlit as st
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="CALCULADORA GRAFICA", page_icon="📈", layout="centered")
+st.set_page_config(page_title="Calculadora Gráfica de Cálculo II", page_icon="📈", layout="centered")
 
-st.title("📘CALCULADORA GRAFICA📘")
+st.title("📘 Calculadora Gráfica de Cálculo II")
 st.markdown(
     """
     Esta aplicación permite:
@@ -18,19 +17,20 @@ st.markdown(
     """
 )
 
-with st.expander("COMO USAR"):
+with st.expander("❓ Cómo usar (ejemplos rápidos)"):
     st.markdown(
         """
-        1. Escribe la función en términos de `x`.
+        1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
            - Potencias: `x**2`  (no usar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `tan(x)`
-        2. Selecciona la operación a realizar (Derivar, Integrar, Área definida, Volumen).
-        3. Si la operación utiliza límites, ingrésalos en las casillas `a` y `b`.
-    
+           - Funciones: `sin(x)`, `cos(x)`, `exp(x)`, `log(x)`
+        2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
+        3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
+        4. Presiona la opción y la app mostrará el resultado y la gráfica.
+        """
     )
 
 x = sp.Symbol('x')
-funcion_str = st.text_input(" Ingresa la función en términos de x:)
+funcion_str = st.text_input("✏️ Ingresa la función en términos de x:", "x**2 + 3*x - 2")
 
 if funcion_str:
     try:
@@ -41,9 +41,9 @@ if funcion_str:
 
         opcion = st.selectbox("Selecciona la operación:", [
             "Derivar",
-            "Integrar",
-            "Área bajo la curva ",
-            "Volumen de revolución"
+            "Integrar (indefinida)",
+            "Área bajo la curva (integral definida)",
+            "Volumen de revolución (alrededor del eje X)"
         ])
 
         # Helper: lambdify safely
@@ -72,7 +72,7 @@ if funcion_str:
                 st.pyplot(plt)
                 plt.close()
             else:
-                st.info("No se pudo generar la gráfica numérica")
+                st.info("No se pudo generar la gráfica numérica (función no numérica en algunos puntos).")
 
         elif opcion == "Integrar (indefinida)":
             integral = sp.integrate(f, x)
