@@ -23,14 +23,14 @@ with st.expander("Cómo usar"):
         """
         1. Escribe la función en términos de `x`.
            - Potencias: `x**2`  (no utilizar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `exp(x)`, `log(x)`
+           - Funciones: `sin(x)`, `cos(x)`, `tam(x)`, `e^(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
     )
 
 x = sp.Symbol('x')
-funcion_str = st.text_input("✏️ Ingresa la función en términos de x:", "x**2 + 3*x - 2")
+funcion_str = st.text_input("Ingresa la función en términos de x:", "x**2 + 3*x - 2")
 
 if funcion_str:
     try:
@@ -41,9 +41,9 @@ if funcion_str:
 
         opcion = st.selectbox("Selecciona la operación:", [
             "Derivar",
-            "Integrar (indefinida)",
-            "Área bajo la curva (integral definida)",
-            "Volumen de revolución (alrededor del eje X)"
+            "Integral",
+            "Área bajo la curva",
+            "Volumen de revolución"
         ])
 
         # Helper: lambdify safely
