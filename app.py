@@ -47,7 +47,7 @@ if funcion_str:
 
         # FONDOS DINAMICOS
         background_gradients = {
-    "Derivar": "#731603",  # 
+    "Derivar": "4F46463",  # 
     "Integrar (indefinida)": "#3B1618",  # verde
     "Área bajo la curva (integral definida)": "#271845",  # verde lima
 
