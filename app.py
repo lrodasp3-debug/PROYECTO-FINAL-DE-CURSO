@@ -47,10 +47,10 @@ if funcion_str:
 
         # 🎨 Fondos dinámicos con degradados
         background_gradients = {
-              "Derivar": "#00897B",  # verde azulado
-    "Integrar (indefinida)": "#43A047",  # verde
-    "Área bajo la curva (integral definida)": "#C0CA33",  # verde lima
-    "Volumen de revolución (alrededor del eje X)": "#E64A19"  # naranja quemado
+              "Derivar": "#731603",  # 
+    "Integrar (indefinida)": "#3B1618",  # verde
+    "Área bajo la curva (integral definida)": "#271845",  # verde lima
+    "Volumen de revolución (alrededor del eje X)": "#182D45"  # naranja quemado
         }
 
         gradient = background_gradients.get(opcion, "linear-gradient(135deg, #ffffff, #f0f0f0)")
