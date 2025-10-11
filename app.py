@@ -22,7 +22,7 @@ with st.expander("Cómo usar"):
     st.markdown(
         """
         1. Escribe la función en términos de `x`.
-           - Potencias: `x**2`  (no Utiñlizar ^)
+           - Potencias: `x**2`  (no Utilizar ^)
            - Funciones: `sin(x)`, `cos(x)`, `tan(x)`, `sec(x)`, `log(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
