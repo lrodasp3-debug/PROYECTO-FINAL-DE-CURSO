@@ -21,9 +21,9 @@ st.markdown(
 with st.expander("Cómo usar"):
     st.markdown(
         """
-        1. Escribe la función en términos de `x`.
-           - Potencias: `x**2`  (no utilizar ^)
-           - Funciones: `sin(x)`, `cos(x)`, `tam(x)`, `e^(x)`
+        1. Escribe la función en términos de `x`. Usa Python / SymPy syntax:
+           - Potencias: `x**2`  (no usar ^)
+           - Funciones: `sin(x)`, `cos(x)`, `tam(x)`, `sec(x)`, `cont(x)`
         2. Elige la operación (Derivar, Integrar, Área definida, Volumen).
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
@@ -41,9 +41,9 @@ if funcion_str:
 
         opcion = st.selectbox("Selecciona la operación:", [
             "Derivar",
-            "Integral",
-            "Área bajo la curva",
-            "Volumen de revolución"
+            "Integrar (indefinida)",
+            "Área bajo la curva (integral definida)",
+            "Volumen de revolución (alrededor del eje X)"
         ])
 
         # Helper: lambdify safely
