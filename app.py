@@ -28,13 +28,13 @@ with st.expander("Cómo usar"):
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
     )
-
+ # ECUACION DE EJEMPLO
 x = sp.Symbol('x')
 funcion_str = st.text_input("Ingresa la función en términos de x:", "x**2 + 3*x - 2")
 
 if funcion_str:
     try:
-        # Parsear y simplificar
+        # SIMPLIFICAR LA FUNCION
         f = sp.sympify(funcion_str)
         f = sp.simplify(f)
         st.latex(f"f(x) = {sp.latex(f)}")
@@ -46,20 +46,21 @@ if funcion_str:
             "Volumen de revolución (alrededor del eje X)"
         ])
 
-        # Helper: lambdify safely
+       
         def to_numeric(func):
             try:
                 return sp.lambdify(x, func, "numpy")
             except Exception:
                 return None
-
+                
+ # FUNCIONAMIENTO DE LAS OPERACIONES DERIVADA 
         if opcion == "Derivar":
             derivada = sp.diff(f, x)
             derivada_s = sp.simplify(derivada)
             st.markdown("**Derivada simbólica:**")
             st.latex(f"f'(x) = {sp.latex(derivada_s)}")
 
-            # Gráfica de f y f'
+            # OPCIONES DE GRAFICA
             f_num = to_numeric(f)
             d_num = to_numeric(derivada_s)
             if f_num and d_num:
@@ -71,9 +72,11 @@ if funcion_str:
                 plt.grid(True)
                 st.pyplot(plt)
                 plt.close()
+                 # MENSAJE DE ERROR
             else:
                 st.info("No se pudo generar la gráfica numérica (función no numérica en algunos puntos).")
 
+         # FUNCIONAMIENTO DE LAS OPERACIONES INTEGRAL
         elif opcion == "Integrar (indefinida)":
             integral = sp.integrate(f, x)
             st.markdown("**Integral indefinida:**")
@@ -89,7 +92,7 @@ if funcion_str:
                 st.markdown("**Área definida:**")
                 st.latex(f"\\mathrm{{Área}} = \\int_{{{a}}}^{{{b}}} f(x)\\,dx = {sp.N(area)}")
 
-                # Gráfica del área
+                # OPCIONES DE GRAFICA
                 f_num = to_numeric(f)
                 if f_num:
                     xx = np.linspace(a, b, 300)
@@ -101,9 +104,10 @@ if funcion_str:
                     plt.grid(True)
                     st.pyplot(plt)
                     plt.close()
+                     # MENSAJE DE ERROR
                 else:
                     st.info("No se pudo graficar la función numéricamente.")
-
+ # VOLUMEN DE AREA
         elif opcion == "Volumen de revolución (alrededor del eje X)":
             a = st.number_input("Límite inferior (a):", value=0.0, format="%.6f", key="vol_a")
             b = st.number_input("Límite superior (b):", value=2.0, format="%.6f", key="vol_b")
@@ -114,7 +118,7 @@ if funcion_str:
                 st.markdown("**Volumen de revolución (eje X):**")
                 st.latex(f"V = \\pi \\int_{{{a}}}^{{{b}}} [f(x)]^2 dx = {sp.N(volumen)}")
 
-                # Visualización 2D
+                 # OPCIONES DE GRAFICA
                 f_num = to_numeric(f)
                 if f_num:
                     xx = np.linspace(a, b, 300)
@@ -126,6 +130,7 @@ if funcion_str:
                     plt.grid(True)
                     st.pyplot(plt)
                     plt.close()
+                     # MENSAJE DE ERROR
                 else:
                     st.info("No se pudo graficar la función numéricamente.")
 
