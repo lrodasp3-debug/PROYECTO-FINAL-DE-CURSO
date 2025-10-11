@@ -3,9 +3,9 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Calculadora Gráfica de Cálculo II", page_icon="📈", layout="centered")
+st.set_page_config(page_title="Calculadora Gráfica ", page_icon="📈", layout="centered")
 
-st.title("📘 Calculadora Gráfica de Cálculo II")
+st.title("📘Calculadora Gráfica📘")
 st.markdown(
     """
     Esta aplicación permite:
