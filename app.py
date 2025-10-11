@@ -45,7 +45,7 @@ if funcion_str:
             "Volumen de revolución (alrededor del eje X)"
         ])
 
-        # 🎨 Cambiar color de fondo dinámicamente
+        # 🎨 Fondo dinámico con transición suave
         background_colors = {
             "Derivar": "#e0f7fa",  # azul claro
             "Integrar (indefinida)": "#fff3e0",  # naranja suave
@@ -60,6 +60,7 @@ if funcion_str:
             <style>
             body {{
                 background-color: {color};
+                transition: background-color 1s ease;
             }}
             </style>
             """,
