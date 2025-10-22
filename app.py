@@ -1,8 +1,10 @@
+  # LIBRERIAS
 import streamlit as st
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
+  # INICIO DE APP
 st.set_page_config(page_title="Calculadora Gráfica", page_icon="📈", layout="centered")
 
 st.title("📘 Calculadora Gráfica 📘")
@@ -28,7 +30,7 @@ with st.expander("Cómo usar"):
         3. Si la operación pide límites, ingrésalos en los campos `a` y `b`.
         """
     )
-
+  # ENTRADA DEL USUARIO
 x = sp.Symbol('x')
 funcion_str = st.text_input(" Ingresa la función en términos de x:", "x**2 + 3*x - 2")
 
@@ -37,7 +39,8 @@ if funcion_str:
         f = sp.sympify(funcion_str)
         f = sp.simplify(f)
         st.latex(f"f(x) = {sp.latex(f)}")
-
+        
+  # SELECCION DE OPERACIOENS
         opcion = st.selectbox("Selecciona la operación:", [
             "Derivar",
             "Integrar (indefinida)",
@@ -71,12 +74,13 @@ if funcion_str:
             """,
             unsafe_allow_html=True
         )
-
+  # CONVERCION NUMERICA
         def to_numeric(func):
             try:
                 return sp.lambdify(x, func, "numpy")
             except Exception:
                 return None
+                
 # PRIMERA ECUACION
         if opcion == "Derivar":
             derivada = sp.diff(f, x)
@@ -131,6 +135,6 @@ if funcion_str:
                 else:
                     st.info("No se pudo graficar la función numéricamente.")
 
-
+  # MENSAJE DE ERROR
     except Exception as e:
         st.error(f"⚠️ Error al procesar la función: {e}")
