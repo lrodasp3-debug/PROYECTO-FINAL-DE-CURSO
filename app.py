@@ -5,9 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
   # INICIO DE APP
-st.set_page_config(page_title="Calculadora Gráfica", page_icon="📈", layout="centered")
+st.set_page_config(page_title="MATEMORFOSIS", page_icon="📈", layout="centered")
 
-st.title("📘 Calculadora Gráfica 📘")
+st.title("📘 MATEMORFOSIS 📘")
 st.markdown(
     """
     Esta aplicación permite:
